@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scTumorDecon"
+version = "0.1.0"
+description = "A biology-informed two-stage deep learning framework for subtype-level deconvolution of bulk RNA-seq data using scRNA-seq references."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Minzhen Tao" }
+]
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "scipy>=1.10",
+    "scikit-learn>=1.3",
+    "torch>=1.10",
+    "anndata>=0.9",
+    "h5py>=3.8",
+    "matplotlib>=3.7",
+    "seaborn>=0.12",
+    "tqdm>=4.60",
+    "joblib>=1.2",
+    "adjustText>=1.3"
+]
+
+[project.urls]
+Homepage = "https://github.com/Sara0201Tao/scTumorDecon"
+Repository = "https://github.com/Sara0201Tao/scTumorDecon"
+
+[project.scripts]
+sctumordecon-simulate = "scTumorDecon.simulation:main"
+sctumordecon-run = "scTumorDecon.main:main"

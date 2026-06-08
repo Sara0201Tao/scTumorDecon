@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Model files
+*.pkl
+*.pt
+*.pth
+
+# Results
+results/
+outputs/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
