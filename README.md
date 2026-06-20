@@ -1,4 +1,4 @@
-# scTumorDecon
+# scCohortDecon
 
 ![License](https://img.shields.io/badge/License-MIT-black)
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
@@ -6,7 +6,7 @@
 
 ## Overview
 
-**scTumorDecon** is a biology-informed two-stage deep learning framework for subtype-level deconvolution of bulk RNA-seq data using scRNA-seq references. The framework integrates single-cell reference atlases, pseudo-bulk simulation, and biologically constrained deep neural networks(DNN) to estimate both major cellular compartments and fine-grained cellular subtypes from bulk transcriptomic samples.
+**scCohortDecon** is a biology-informed two-stage deep learning framework for subtype-level deconvolution of bulk RNA-seq data using scRNA-seq references. The framework integrates single-cell reference atlases, pseudo-bulk simulation, and biologically constrained deep neural networks(DNN) to estimate both major cellular compartments and fine-grained cellular subtypes from bulk transcriptomic samples.
 
 The workflow is specifically designed for complex clinical samples, where low-abundance and highly correlated cell populations are difficult to resolve using conventional deconvolution approaches.
 
@@ -18,7 +18,7 @@ The workflow is specifically designed for complex clinical samples, where low-ab
 
 Single-cell RNA-seq references are first used to generate pseudo-bulk samples with known cellular compositions. A two-stage hierarchical deep learning framework is then trained to predict major cell classes followed by cellular subtypes. The trained models can subsequently be applied to independent bulk RNA-seq cohorts for subtype-level deconvolution and downstream biological analyses.
 
-scTumorDecon supports both CPU and GPU execution. GPU acceleration is recommended for large-scale pseudo-bulk simulation and model training.
+scCohortDecon supports both CPU and GPU execution. GPU acceleration is recommended for large-scale pseudo-bulk simulation and model training.
 
 
 ## Installation
@@ -26,8 +26,8 @@ scTumorDecon supports both CPU and GPU execution. GPU acceleration is recommende
 Clone the repository:
 
 ```bash
-git clone https://github.com/Sara0201Tao/scTumorDecon.git
-cd scTumorDecon
+git clone https://github.com/Sara0201Tao/scCohortDecon.git
+cd scCohortDecon
 ```
 
 Install required packages:
@@ -42,17 +42,17 @@ Alternatively, install the package locally:
 pip install -e .
 ```
 
-scTumorDecon is implemented using PyTorch and supports both CPU and GPU execution.
+scCohortDecon is implemented using PyTorch and supports both CPU and GPU execution.
 For GPU acceleration, please install a CUDA-compatible PyTorch version following the official PyTorch instructions: https://pytorch.org/get-started/locally/
 
 
 ## Repository Structure
 
 ```text
-scTumorDecon/
+scCohortDecon/
 ├── images/
 │
-├── scTumorDecon/
+├── scCohortDecon/
 │   ├── __init__.py
 │   ├── simulation.py
 │   ├── utils.py
@@ -167,7 +167,7 @@ Example:
 Generate pseudo-bulk samples from annotated single-cell references.
 
 ```bash
-python -m scTumorDecon.simulation \
+python -m scCohortDecon.simulation \
     --scRNA-path ${SCRNA_PATH} \
     --cellType-path ${CELLTYPE_PATH} \
     --majorName MajorType \
@@ -183,12 +183,12 @@ Output:
 train_data.h5ad
 ```
 
-### Step 2. Train scTumorDecon models
+### Step 2. Train scCohortDecon models
 
 Train the two-stage deep learning framework using pseudo-bulk samples.
 
 ```bash
-python -m scTumorDecon.main \
+python -m scCohortDecon.main \
     --device cuda \
     --trainFile-path ${TRAIN_FILE} \
     --testFile-path ${TEST_FILE} \
@@ -213,7 +213,7 @@ Output:
 Apply trained models to independent bulk RNA-seq cohorts.
 
 ```bash
-python -m scTumorDecon.main \
+python -m scCohortDecon.main \
     --device cuda \
     --trainFile-path ${TRAIN_FILE} \
     --testFile-path ${BULK_EXP_FILE} \
@@ -234,7 +234,7 @@ Output:
 
 ### Step 4. Evaluate downstream predictive models
 
-The `nestedCV_evaluation.py` module can be used to evaluate downstream classification models based on scTumorDecon-derived cell proportions and optional functional/pathway features.
+The `nestedCV_evaluation.py` module can be used to evaluate downstream classification models based on scCohortDecon-derived cell proportions and optional functional/pathway features.
 
 Input data should be provided as a single `.csv` table containing:
 
@@ -248,7 +248,7 @@ Example:
 ```python
 import pandas as pd
 
-from scTumorDecon.nestedCV_evaluation import run_svm_analysis
+from scCohortDecon.nestedCV_evaluation import run_svm_analysis
 
 # Features used for classification
 CELL_FEATURES = []
@@ -289,7 +289,7 @@ The evaluation framework provides:
 
 ## Citation
 
-If you use scTumorDecon in your research, please cite:
+If you use scCohortDecon in your research, please cite:
 
 ```text
 xxxx
