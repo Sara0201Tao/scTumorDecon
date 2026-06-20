@@ -33,4 +33,4 @@ Repository = "https://github.com/Sara0201Tao/scCohortDecon"
 
 [project.scripts]
 scCohortDecon-simulate = "scCohortDecon.simulation:main"
-scCohortDecon-run = "scTumorDecon.main:main"
+scCohortDecon-run = "scCohortDecon.main:main"
