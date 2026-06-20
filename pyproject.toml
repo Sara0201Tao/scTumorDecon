@@ -3,7 +3,7 @@ requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "scTumorDecon"
+name = "scCohortDecon"
 version = "0.1.0"
 description = "A biology-informed two-stage deep learning framework for subtype-level deconvolution of bulk RNA-seq data using scRNA-seq references."
 readme = "README.md"
@@ -28,9 +28,9 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Sara0201Tao/scTumorDecon"
-Repository = "https://github.com/Sara0201Tao/scTumorDecon"
+Homepage = "https://github.com/Sara0201Tao/scCohortDecon"
+Repository = "https://github.com/Sara0201Tao/scCohortDecon"
 
 [project.scripts]
-sctumordecon-simulate = "scTumorDecon.simulation:main"
-sctumordecon-run = "scTumorDecon.main:main"
+scCohortDecon-simulate = "scCohortDecon.simulation:main"
+scCohortDecon-run = "scTumorDecon.main:main"
